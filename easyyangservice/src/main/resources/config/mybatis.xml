@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/tx
+			http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="dataSources" class="com.easyyang.dbtest.config.MultipleDataSource">
+		<property name="dataSourceDescriptors">
+			<set>
+				<bean class="com.easyyang.dbtest.entity.DataSourceDescriptor">
+					<property name="identity" value="writePartion" />
+					<!--指定数据源-->
+					<property name="targetDataSource" value="writeDataSource" />
+					<!--指定访问的数据源是否正常，心跳检测-->
+					<property name="targetDetectorDataSource" value="writeDataSource" />
+					<!--同组备机-->
+					<property name="standbyDataSource" value="writeDataSourceBack" />
+					<!--备机检测-->
+					<property name="standbyDetectorDataSource" value="writeDataSourceBack" />
+				</bean>
+				<bean class="com.easyyang.dbtest.entity.DataSourceDescriptor">
+					<property name="identity" value="readPartion" />
+					<!--指定数据源-->
+					<property name="targetDataSource" value="readDataSource" />
+					<!--指定访问的数据源是否正常，心跳检测-->
+					<property name="targetDetectorDataSource" value="readDataSource" />
+					<!--同组备机-->
+					<property name="standbyDataSource" value="readDataSourceBack" />
+					<!--备机检测-->
+					<property name="standbyDetectorDataSource" value="readDataSourceBack" />
+				</bean>
+			</set>
+		</property>
+		<property name="haDataSourceCreator">
+			<bean class="com.easyyang.dbtest.config.FailoverHotSwapDataSourceCreator">
+				<property name="detectingSql" value="update caland set timeflag=CURRENT_TIMESTAMP"/>
+			</bean>
+		</property>
+	</bean>
+
+	<!-- 数据源配置, 使用 BoneCP 数据库连接池 -->
+	<bean id="dataSourceWrite" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
+		<property name="driverClassName" value="${jdbc.driver}" />
+
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${write.jdbc.url}" />
+		<property name="username" value="${write.jdbc.username}" />
+		<property name="password" value="${write.jdbc.password}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${jdbc.pool.init}" />
+		<property name="minIdle" value="${jdbc.pool.minIdle}" />
+		<property name="maxActive" value="${jdbc.pool.maxActive}" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+
+		<property name="validationQuery" value="${jdbc.testSql}" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<!-- 超过时间限制是否回收 -->
+		<property name="removeAbandoned" value="true" />
+		<!-- 超时时间；单位为秒。1800秒=30分钟 -->
+		<property name="removeAbandonedTimeout" value="1800" />
+		<!-- 关闭abanded连接时输出错误日志 -->
+		<property name="logAbandoned" value="true" />
+
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="stat" />
+	</bean>
+
+	<bean id="dataSourceRead" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
+		<property name="driverClassName" value="${jdbc.driver}" />
+
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${read.jdbc.url}" />
+		<property name="username" value="${read.jdbc.username}" />
+		<property name="password" value="${read.jdbc.password}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${jdbc.pool.init}" />
+		<property name="minIdle" value="${jdbc.pool.minIdle}" />
+		<property name="maxActive" value="${jdbc.pool.maxActive}" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+
+		<property name="validationQuery" value="${jdbc.testSql}" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<!-- 超过时间限制是否回收 -->
+		<property name="removeAbandoned" value="true" />
+		<!-- 超时时间；单位为秒。1800秒=30分钟 -->
+		<property name="removeAbandonedTimeout" value="1800" />
+		<!-- 关闭abanded连接时输出错误日志 -->
+		<property name="logAbandoned" value="true" />
+
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="stat" />
+	</bean>
+
+	<!-- MyBatis begin -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="typeAliasesPackage" value="com.credithc.hyd.data.entity"/>
+		<property name="typeAliasesSuperType" value="com.credithc.hyd.data.common.BaseEntity"/>
+		<property name="mapperLocations" value="classpath:com/easyyang/dbtest/mappings/**/*.xml"/>
+		<property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
+	</bean>
+
+	<!-- 扫描basePackage下所有以@MyBatisDao注解的接口 -->
+	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+		<property name="basePackage" value="com.credithc.hyd.data"/>
+		<property name="annotationClass" value="com.credithc.hyd.data.common.MyBatisDao"/>
+	</bean>
+
+	<!-- 定义事务 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 配置 Annotation 驱动，扫描@Transactional注解的类定义事务  -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+	<!-- MyBatis end -->
+
+	<!-- 配置 JSR303 Bean Validator 定义 -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+	<!-- 激活自动代理功能 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+
+	<!--配置慢查询日志 执行日志超过5sql,需打印日志-->
+	<bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="slowSqlMillis" value="5000" />
+		<property name="logSlowSql" value="true"/>
+	</bean>
+</beans>

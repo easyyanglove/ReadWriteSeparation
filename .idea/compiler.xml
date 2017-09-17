@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="easyyang-common" />
+        <module name="easyyang-dao" />
+        <module name="easyyangapi" />
+        <module name="easyyangentity" />
+        <module name="easyyangservice" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="easyyang-common" target="1.8" />
+      <module name="easyyang-dao" target="1.8" />
+      <module name="easyyangapi" target="1.8" />
+      <module name="easyyangentity" target="1.8" />
+      <module name="easyyangservice" target="1.8" />
+      <module name="ReadWriteSeparation" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
