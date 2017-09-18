@@ -7,11 +7,11 @@
     <artifactId>ReadWriteSeparation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>easyyangdao</module>
-        <module>easyyangentity</module>
-        <module>easyyangservice</module>
-        <module>easyyangapi</module>
-        <module>easyyangcommon</module>
+        <module>easyyang-dao</module>
+        <module>easyyang-entity</module>
+        <module>easyyang-service</module>
+        <module>easyyang-api</module>
+        <module>easyyang-common</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/easyyangapi" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/easyyangcommon" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/easyyangdao" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/easyyangentity" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/easyyangservice" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easyyang-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easyyang-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easyyang-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easyyang-entity" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/easyyang-service" charset="UTF-8" />
   </component>
 </project>

@@ -3,11 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ReadWriteSeparation.iml" filepath="$PROJECT_DIR$/ReadWriteSeparation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/easyyangcommon/easyyang-common.iml" filepath="$PROJECT_DIR$/easyyangcommon/easyyang-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/easyyangdao/easyyang-dao.iml" filepath="$PROJECT_DIR$/easyyangdao/easyyang-dao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/easyyangapi/easyyangapi.iml" filepath="$PROJECT_DIR$/easyyangapi/easyyangapi.iml" />
-      <module fileurl="file://$PROJECT_DIR$/easyyangentity/easyyangentity.iml" filepath="$PROJECT_DIR$/easyyangentity/easyyangentity.iml" />
-      <module fileurl="file://$PROJECT_DIR$/easyyangservice/easyyangservice.iml" filepath="$PROJECT_DIR$/easyyangservice/easyyangservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easyyang-api/easyyang-api.iml" filepath="$PROJECT_DIR$/easyyang-api/easyyang-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easyyang-common/easyyang-common.iml" filepath="$PROJECT_DIR$/easyyang-common/easyyang-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easyyang-dao/easyyang-dao.iml" filepath="$PROJECT_DIR$/easyyang-dao/easyyang-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easyyang-entity/easyyangentity.iml" filepath="$PROJECT_DIR$/easyyang-entity/easyyangentity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easyyang-service/easyyangservice.iml" filepath="$PROJECT_DIR$/easyyang-service/easyyangservice.iml" />
     </modules>
   </component>
 </project>
