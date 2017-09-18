@@ -18,10 +18,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="easyyang-common" />
-    <orderEntry type="module" module-name="easyyangentity" />
-    <orderEntry type="module" module-name="easyyang-common" />
     <orderEntry type="module" module-name="easyyang-dao" />
-    <orderEntry type="module" module-name="easyyangentity" />
+    <orderEntry type="module" module-name="easyyang-entity" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.10" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.8.10" level="project" />

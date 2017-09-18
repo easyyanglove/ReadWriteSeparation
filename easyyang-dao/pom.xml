@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.easyyang.dbtest</groupId>
-            <artifactId>easyyangentity</artifactId>
+            <artifactId>easyyang-entity</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

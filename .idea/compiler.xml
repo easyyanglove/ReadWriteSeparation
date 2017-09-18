@@ -9,6 +9,8 @@
         <module name="easyyang-api" />
         <module name="easyyang-common" />
         <module name="easyyang-dao" />
+        <module name="easyyang-entity" />
+        <module name="easyyang-service" />
         <module name="easyyangapi" />
         <module name="easyyangentity" />
         <module name="easyyangservice" />
@@ -18,6 +20,8 @@
       <module name="easyyang-api" target="1.8" />
       <module name="easyyang-common" target="1.8" />
       <module name="easyyang-dao" target="1.8" />
+      <module name="easyyang-entity" target="1.8" />
+      <module name="easyyang-service" target="1.8" />
       <module name="easyyangapi" target="1.8" />
       <module name="easyyangentity" target="1.8" />
       <module name="easyyangservice" target="1.8" />

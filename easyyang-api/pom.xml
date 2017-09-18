@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>easyyangapi</artifactId>
+    <artifactId>easyyang-api</artifactId>
 
 
 </project>
